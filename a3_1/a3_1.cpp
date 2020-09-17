@@ -20,13 +20,16 @@
 #include <iostream>
 using namespace std;
 
+
 const int LOW_LIMIT = 1;                            // Defines lower bounds
 const int HIGH_LIMIT = 100;                         // Defines upper bounds
 
+
 void playOneGame();
 void getUserResponseToGuess(int guess, char &result);
-char validateInput(char &result);
+char validateInput(char result);
 int getMidpoint(int low, int high);
+
 
 int main(int argc, const char * argv[]) {
     char response;                                  // Holds response to start game
@@ -105,7 +108,7 @@ int getMidpoint(int low, int high) {
 // Definition of validateInput. Validates user input for acceptable responses. Any other
 // response will require the user to re-input the response until it is either h, l or c.
 
-char validateInput (char &result) {
+char validateInput (char result) {
     while (result != 'l' && result != 'h' && result != 'c') {
         cout << "Invalid input: Enter 'l' if your number is lower, ";
         cout << "'h' if your number is higher, 'c' if it is correct: ";
