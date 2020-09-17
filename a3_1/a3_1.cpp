@@ -75,9 +75,9 @@ void playOneGame() {
 
 
 
-// Definition of function getUserResponseToGuess. Gets user's input on accuracy of guess
-// as higher, lower or correct. Takes in guess as a parameter and passes reference variable
-// as another parameter.
+// Definition of function getUserResponseToGuess. The function is passed a guess and gets
+// the user's input on accuracy of guess as to whether the user's number is higher, lower
+// or correct.
 
 void getUserResponseToGuess(int guess, char &result) {
     cout << "Enter 'l' if your number is lower, 'h' if it is higher, ";
@@ -85,6 +85,32 @@ void getUserResponseToGuess(int guess, char &result) {
     cin >> result;
     result = validateInput(result);
 }
+
+
+
+
+
+
+/*
+ 
+ Alternative function to combine input validation and test out different iterations of
+ logical and relational operators.
+ 
+ void getUserResponseToGuess(int guess, char &result) {
+     
+     do {
+         cout << "Enter 'l' if your number is lower, 'h' if it is higher, ";
+         cout << "'c' if it is correct: ";
+         cin >> result;
+         
+         if (result != 'l' && result != 'h' && result != 'c') {
+             cout << "Error: Invalid input!" << endl;
+         }
+         
+     } while (!(result == 'l' || result == 'h' || result == 'c'));
+ }
+
+ */
 
 
 
@@ -109,7 +135,8 @@ int getMidpoint(int low, int high) {
 
 char validateInput (char result) {
     while (result != 'l' && result != 'h' && result != 'c') {
-        cout << "Invalid input: Enter 'l' if your number is lower, ";
+        cout << "Error: Invalid input!" << endl;
+        cout << "Enter 'l' if your number is lower, ";
         cout << "'h' if your number is higher, 'c' if it is correct: ";
         cin >> result;
     }
@@ -129,7 +156,9 @@ char validateInput (char result) {
  My guess is 50. Enter 'l' if your number is lower, 'h' if it is higher, 'c' if it is correct: l
  My guess is 25. Enter 'l' if your number is lower, 'h' if it is higher, 'c' if it is correct: h
  My guess is 37. Enter 'l' if your number is lower, 'h' if it is higher, 'c' if it is correct: x
- Invalid input: Enter 'l' if your number is lower, 'h' if your number is higher, 'c' if it is correct: c
+ Error: Invalid input!
+ Enter 'l' if your number is lower, 'h' if it is higher, 'c' if it is correct: c
  Great! Do you want to play again (y/n)? n
+ Program ended with exit code: 0
  
  */
