@@ -41,7 +41,6 @@ int main(int argc, const char * argv[]) {
         cout << "Great! Do you want to play again (y/n)? ";
         cin >> response;
     }
-    return 0;
 }
 
 
@@ -132,6 +131,5 @@ char validateInput (char result) {
  My guess is 37. Enter 'l' if your number is lower, 'h' if it is higher, 'c' if it is correct: x
  Invalid input: Enter 'l' if your number is lower, 'h' if your number is higher, 'c' if it is correct: c
  Great! Do you want to play again (y/n)? n
- Program ended with exit code: 0
  
  */
