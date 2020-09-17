@@ -1,11 +1,16 @@
 /*
  Trang Hoang
+ CS110B
+ Dave Harden
  9/15/20
+ a3_1.cpp
+ 
  Assignment 3.1
  
- Program guesses user's number from 1 to 100, inclusive, based on guessing the midpoints.
-
- a3_1.cpp
+ Program asks user to play guessing game whereby the program guesses user's number from 1
+ to 100, inclusive, based on guessing the midpoints. User indicates whether the number is
+ higher, lower or correct based on the guess. Game continues until the program accurately
+ guesses the correct number. Program asks user to play again.
  
  Created by nyccowgirl on 9/15/20.
  Copyright © 2020 nyccowgirl. All rights reserved.
@@ -32,8 +37,8 @@ int main(int argc, const char * argv[]) {
         playOneGame();
         cout << "Great! Do you want to play again (y/n)? ";
         cin >> response;
-    return 0;
     }
+    return 0;
 }
 
 
@@ -41,12 +46,12 @@ int main(int argc, const char * argv[]) {
 
 
 
-// Definition of function playOneGame
+// Definition of function playOneGame. Initiates a new game.
 
 void playOneGame() {
     int lower = LOW_LIMIT, upper = HIGH_LIMIT;      // Defines initial lower/upper limits
     int guess;                                      // Holds guess based on midpoint
-    char result = '\0';                           // Holds user input for guess accuracy
+    char result = '\0';                             // Holds user input for guess accuracy
     
     cout << "Think of a number between 1 and 100." << endl;
     
@@ -55,9 +60,12 @@ void playOneGame() {
         cout << "My guess is " << guess << ". ";
         getUserResponseToGuess(guess, result);
         
-        if (result == 'h')
+        if (result == 'h') {
+            lower = guess + 1;
+        } else {
+            upper = guess - 1;
+        }
     }
-    
 }
 
 
@@ -65,15 +73,15 @@ void playOneGame() {
 
 
 
-// Definition of function getUserResponseToGuess
+// Definition of function getUserResponseToGuess. Gets user's input on accuracy of guess
+// as higher, lower or correct. Takes in guess as a parameter and passes reference variable
+// as another parameter.
 
 void getUserResponseToGuess(int guess, char &result) {
-    
     cout << "Enter 'l' if your number is lower, 'h' if it is higher, ";
     cout << "'c' if it is correct: ";
     cin >> result;
     result = validateInput(result);
-
 }
 
 
@@ -81,10 +89,12 @@ void getUserResponseToGuess(int guess, char &result) {
 
 
 
-// Definition of function getMidpoint
+// Definition of function getMidpoint. Calculates and returns the midpoint of a range,
+// based on two numbers that are passed into the function. Where the midpoint is in between
+// two integers, the lower number is the midpoint.
 
 int getMidpoint(int low, int high) {
-    return (low + high - 1) / 2;
+    return (low + high) / 2;                    // Int will truncate to lower number
 }
 
 
@@ -92,7 +102,8 @@ int getMidpoint(int low, int high) {
 
 
 
-// Definition of validateInput
+// Definition of validateInput. Validates user input for acceptable responses. Any other
+// response will require the user to re-input the response until it is either h, l or c.
 
 char validateInput (char &result) {
     while (result != 'l' && result != 'h' && result != 'c') {
@@ -106,6 +117,18 @@ char validateInput (char &result) {
 
 /*
  
-
+ Ready to play (y/n)? y
+ Think of a number between 1 and 100.
+ My guess is 50. Enter 'l' if your number is lower, 'h' if it is higher, 'c' if it is correct: h
+ My guess is 75. Enter 'l' if your number is lower, 'h' if it is higher, 'c' if it is correct: h
+ My guess is 88. Enter 'l' if your number is lower, 'h' if it is higher, 'c' if it is correct: c
+ Great! Do you want to play again (y/n)? y
+ Think of a number between 1 and 100.
+ My guess is 50. Enter 'l' if your number is lower, 'h' if it is higher, 'c' if it is correct: l
+ My guess is 25. Enter 'l' if your number is lower, 'h' if it is higher, 'c' if it is correct: h
+ My guess is 37. Enter 'l' if your number is lower, 'h' if it is higher, 'c' if it is correct: x
+ Invalid input: Enter 'l' if your number is lower, 'h' if your number is higher, 'c' if it is correct: c
+ Great! Do you want to play again (y/n)? n
+ Program ended with exit code: 0
  
  */
