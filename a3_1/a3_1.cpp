@@ -77,7 +77,7 @@ void playOneGame() {
 
 // Definition of function getUserResponseToGuess. The function is passed a guess and gets
 // the user's input on accuracy of guess as to whether the user's number is higher, lower
-// or correct.
+// or correct. The response from the user is passed as a reference variable.
 
 void getUserResponseToGuess(int guess, char &result) {
     cout << "Enter 'l' if your number is lower, 'h' if it is higher, ";
@@ -130,8 +130,9 @@ int getMidpoint(int low, int high) {
 
 
 
-// Definition of validateInput. Validates user input for acceptable responses. Any other
-// response will require the user to re-input the response until it is either h, l or c.
+// Definition of validateInput. Validates user input for acceptable responses and returns a
+// valid response. Any other response will require the user to re-input the response unti
+// it is either h, l or c.
 
 char validateInput (char result) {
     while (result != 'l' && result != 'h' && result != 'c') {
@@ -142,6 +143,10 @@ char validateInput (char result) {
     }
     return result;
 }
+
+
+
+
 
 
 /*
